@@ -9,6 +9,8 @@ jobs:
       - name: Build AUR Package
         uses: DuckSoft/build-aur-action@v1.1
         with:
-          repo-name: hello
+          repo-name: linux-vfio
       - name: LS
-        run: ls -al *
+        run: | 
+          ls -al *
+          ls -al pkg
