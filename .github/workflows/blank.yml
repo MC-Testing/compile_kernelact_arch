@@ -3,16 +3,14 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  my-job:
     runs-on: ubuntu-18.04
+    container:
+      image: archlinux
+      options: --privileged
+      volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Archlinux
-      run: curl -L https://github.com/zaoqi/github-actions-archlinux/raw/master/install.sh | sh
-    - name: Docker hello-world
-      run: |
-        sudo pacman --noconfirm -Syu git make gcc fakeroot linux linux-headers
-        git clone https://aur.archlinux.org/linux-vfio.git
-        cd linux-vfio
-        makepkg -si
-        echo "Build"
+      - name: Build Arch Linux package
+      - uses: actions/checkout@v1
+      - run: ls && uname -a
