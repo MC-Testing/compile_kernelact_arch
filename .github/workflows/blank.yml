@@ -1,17 +1,5 @@
 name: CI
 on: push
-jobs:
-  my-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: my-step
-        run: |
-          sudo /usr/bin/docker run --name a5c76b057483b2903a4237a244305920df09fc_a320a6 "/usr/bin/gpg --recv-keys --keyserver hkps://keys.openpgp.org 3B94A80E50A477C7"
-      - name: Build AUR Package (test)
-        uses: MC-Testing/build-aur-action@v1.1
-        with:
-          repo-name: linux-vfio
-      - name: LS
-        run: |
-          ls -al *
-          ls -al pkg
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
