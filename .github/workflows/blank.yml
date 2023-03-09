@@ -19,6 +19,6 @@ jobs:
                     sudo pacman -S linux linux-headers gcc make fakeroot --noconfirm
                     git clone "https://aur.archlinux.org/linux-vfio.git"
                     /usr/bin/gpg --recv-keys --keyserver hkps://keys.openpgp.org 3B94A80E50A477C7
-                    bash -c "cd linux-vfio"
+                    bash -c "cd linux-vfio; pwd"
                     pwd
                     makepkg -sf --noconfirm
