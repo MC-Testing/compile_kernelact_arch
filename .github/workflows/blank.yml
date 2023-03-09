@@ -5,8 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: echo "Hello World!"
+        run: echo "Run!"
       - name: Build AUR Package
         uses: DuckSoft/build-aur-action@v1.1
         with:
-          repo-name: qv2ray-dev-git
+          repo-name: hello
+      - name: LS
+        run: ls -al *
