@@ -1,5 +1,7 @@
 name: CI
 on: push
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
+jobs:
+  my-job:
+    runs:
+      using: 'docker'
+      image: 'Dockerfile'
