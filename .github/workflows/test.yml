@@ -22,8 +22,8 @@ jobs:
                     bash -c "cd linux-vfio; mkdir pkg; touch pkg/1.txt;"
                     sudo zip -r pkg.zip linux-vfio/pkg/
 
-          - name: LS
-            run: |
-              ls -al && ls -al *
-              echo "test var www"
-              ls -al /tmp && ls -al /tmp/*
+          - name: Archive kernel coverage results
+            uses: actions/upload-artifact@v3
+            with:
+              name: linux-kernel
+              path: ./pkg.zip
