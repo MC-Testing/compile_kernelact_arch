@@ -13,4 +13,10 @@ jobs:
                 image: archlinux:latest
                 options: -v ${{ github.workspace }}:/var/www
                 run: |
-                    ls
+                    cd /tmp
+                    pacman -S sudo --noconfirm
+                    sudo pacman -Syu base-devel git --noconfirm --overwrite '*' && sed -i '/E_ROOT/d' /usr/bin/makepkg
+                    sudo pacman -S linux linux-headers gcc make fakeroot --noconfirm
+                    git clone "https://aur.archlinux.org/linux-vfio.git"
+                    cd linux-vfio
+                    makepkg -sf --noconfirm
