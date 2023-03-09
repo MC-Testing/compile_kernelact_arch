@@ -26,3 +26,19 @@ jobs:
             with:
               name: linux-kernel
               path: ./pkg.zip
+          - name: Kernel1
+            uses: actions/upload-artifact@v3
+            with:
+              name: kernel1
+              path: ./linux-vfio/linux-vfio-6.2.1.arch1-1-x86_64.pkg.tar.zst
+          - name: Kernel2
+            uses: actions/upload-artifact@v3
+            with:
+              name: kernel2
+              path: ./linux-vfio/linux-vfio-headers-6.2.1.arch1-1-x86_64.pkg.tar.zst
+          - name: Kernel3
+            uses: actions/upload-artifact@v3
+            with:
+              name: kernel3
+              path: ./linux-vfio/linux-vfio-docs-6.2.1.arch1-1-x86_64.pkg.tar.zst
+        
