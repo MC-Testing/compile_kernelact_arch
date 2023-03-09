@@ -11,7 +11,7 @@ jobs:
             uses: addnab/docker-run-action@v3
             with:
                 image: archlinux:latest
-                options: -v ${{ github.workspace }}:/var/www
+                options: -v ${{ github.workspace }}:/tmp/
                 run: |
                     cd /tmp
                     pacman -Sy sudo --noconfirm
@@ -26,4 +26,4 @@ jobs:
             run: |
               ls -al && ls -al *
               echo "test var www"
-              ls -al /var/www && ls -al /var/www/*
+              ls -al /tmp && ls -al /tmp/*
