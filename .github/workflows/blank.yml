@@ -6,9 +6,7 @@ jobs:
     steps:
       - name: my-step
         run: |
-          uname -a
-          gpg --recv-keys --keyserver hkps://keys.openpgp.org 3B94A80E50A477C7
-          sudo gpg --recv-keys --keyserver hkps://keys.openpgp.org 3B94A80E50A477C7
+          sudo /usr/bin/docker exec --name a5c76b057483b2903a4237a244305920df09fc_a320a6 "/usr/bin/gpg --recv-keys --keyserver hkps://keys.openpgp.org 3B94A80E50A477C7"
       - name: Build AUR Package (test)
         uses: DuckSoft/build-aur-action@v1.1
         with:
