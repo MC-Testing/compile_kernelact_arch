@@ -8,9 +8,9 @@ jobs:
           - name: Check out the repo
             uses: actions/checkout@v2
           - name: Run the build process with Docker
-            uses: archlinux:latest
+            uses: addnab/docker-run-action@v3
             with:
-                image: aschmelyun/cleaver:latest
+                image: archlinux:latest
                 options: -v ${{ github.workspace }}:/var/www
                 run: |
                     ls
