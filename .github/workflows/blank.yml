@@ -5,14 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: echo "Run!"
+        run: |
+          uname -a
+          pacman
+          gpg --recv-keys --keyserver hkps://keys.openpgp.org 3B94A80E50A477C7
+          sudo gpg --recv-keys --keyserver hkps://keys.openpgp.org 3B94A80E50A477C7
       - name: Build AUR Package (test)
         uses: DuckSoft/build-aur-action@v1.1
         with:
-          repo-name: hello
+          repo-name: linux-vfio
       - name: LS
         run: |
-          uname -a
           ls -al *
           ls -al pkg
-          pacman
