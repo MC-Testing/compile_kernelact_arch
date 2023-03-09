@@ -11,14 +11,18 @@ jobs:
             uses: addnab/docker-run-action@v3
             with:
                 image: archlinux:latest
-                options: -v ${{ github.workspace }}:/var/www
+                options: -v ${{ github.workspace }}:/tmp/
                 run: |
                     cd /tmp
                     pacman -Sy sudo --noconfirm
                     sudo pacman -Syu base-devel git --noconfirm --overwrite '*' && sed -i '/E_ROOT/d' /usr/bin/makepkg
-                    sudo pacman -S linux linux-headers gcc make fakeroot --noconfirm
+                    sudo pacman -S linux linux-headers gcc make fakeroot zip unzip --noconfirm
                     git clone "https://aur.archlinux.org/linux-vfio.git"
                     /usr/bin/gpg --recv-keys --keyserver hkps://keys.openpgp.org 3B94A80E50A477C7
                     bash -c "cd linux-vfio; makepkg -sf --noconfirm"
-                    ls linux-vfio/* -al
-                    
+                    sudo zip -r pkg.zip linux-vfio/pkg/
+          - name: Archive kernel coverage results
+            uses: actions/upload-artifact@v3
+            with:
+              name: linux-kernel
+              path: ./pkg.zip
