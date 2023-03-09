@@ -6,11 +6,13 @@ jobs:
     steps:
       - name: my-step
         run: echo "Run!"
-      - name: Build AUR Package
+      - name: Build AUR Package (test)
         uses: DuckSoft/build-aur-action@v1.1
         with:
-          repo-name: linux-vfio
+          repo-name: hello
       - name: LS
-        run: | 
+        run: |
+          uname -a
           ls -al *
           ls -al pkg
+          pacman
